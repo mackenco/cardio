@@ -25,7 +25,7 @@
           @click="selectItem(item)"
           v-model="item.selected">
           <v-list-tile-action>
-            <v-icon>{{ item.icon }}</v-icon>
+            <v-icon>mdi-{{ item.icon }}</v-icon>
           </v-list-tile-action>
           <v-list-tile-content>
             <v-list-tile-title>{{ item.title }}</v-list-tile-title>
@@ -53,21 +53,7 @@
           align-center>
 
           <v-flex xs10>
-            <component
-              v-for="item in items"
-              :key="item.key"
-              :is="item.key"
-              v-show="item.selected" />
-
-            <v-card v-show="selected.key === 'primes'">
-              <v-card-title primary-title>
-                <h3>Its some primes shit</h3>
-              </v-card-title>
-              <v-card-text>
-                Hi
-              </v-card-text>
-            </v-card>
-
+            <component :is="selected.key" />
           </v-flex>
 
         </v-layout>
@@ -85,15 +71,17 @@
 
 <script>
 import fibonacci from './components/Fibonacci';
+import primes from './components/Primes';
 
 const items = [
-  { key: 'fibonacci', title: 'Fibonacci Calculator', icon: 'mdi-calculator', selected: true },
-  { key: 'primes', title: 'Prime Factorization', icon: 'mdi-cube-unfolded' },
+  { key: 'fibonacci', title: 'Fibonacci Calculator', icon: 'calculator', selected: true },
+  { key: 'primes', title: 'Prime Factorization', icon: 'cube-unfolded' },
 ];
 
 export default {
   components: {
     fibonacci,
+    primes,
   },
   data: () => ({
     drawer: null,
