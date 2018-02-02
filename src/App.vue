@@ -71,17 +71,17 @@
 
 <script>
 import fibonacci from './components/Fibonacci';
-import primes from './components/Primes';
+import change from './components/Change';
 
 const items = [
-  { key: 'fibonacci', title: 'Fibonacci Calculator', icon: 'calculator', selected: true },
-  { key: 'primes', title: 'Prime Factorization', icon: 'cube-unfolded' },
+  { key: 'change', title: 'Make Change', icon: 'coins', selected: true },
+  { key: 'fibonacci', title: 'Fibonacci Calculator', icon: 'calculator' },
 ];
 
 export default {
   components: {
     fibonacci,
-    primes,
+    change,
   },
   data: () => ({
     drawer: null,
