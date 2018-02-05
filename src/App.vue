@@ -70,6 +70,18 @@
 </template>
 
 <script>
+/*
+ * ideas: https://github.com/karan/Projects
+ * API: distance between two cities
+ * API: rss feed generator
+ * API: current weather
+ * string: fizz buzz
+ * string: reverse a string
+ * string: pig latinizer
+ * string: palindrome check
+ * string: caesar cipher
+ * interactive: blue apron game
+ */
 import fibonacci from './components/Fibonacci';
 import change from './components/Change';
 
