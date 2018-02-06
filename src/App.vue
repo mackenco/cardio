@@ -19,18 +19,33 @@
       <v-list
         dense
         class="pt-0">
-        <v-list-tile
+        <v-list-group
           v-for="item in items"
-          :key="item.title"
-          @click="selectItem(item)"
-          v-model="item.selected">
-          <v-list-tile-action>
-            <v-icon>mdi-{{ item.icon }}</v-icon>
-          </v-list-tile-action>
-          <v-list-tile-content>
-            <v-list-tile-title>{{ item.title }}</v-list-tile-title>
-          </v-list-tile-content>
-        </v-list-tile>
+          :value="item.active"
+          :key="item.title">
+          <v-list-tile slot="item">
+            <v-list-tile-content>
+              <v-list-tile-title>{{ item.title }}</v-list-tile-title>
+            </v-list-tile-content>
+            <v-list-tile-action>
+              <v-icon>keyboard_arrow_down</v-icon>
+            </v-list-tile-action>
+          </v-list-tile>
+
+          <v-list-tile
+            v-for="subItem in item.items"
+            :key="subItem.title"
+            @click="selectItem(subItem)"
+            v-model="subItem.selected">
+            <v-list-tile-action>
+              <v-icon>mdi-{{ subItem.icon }}</v-icon>
+            </v-list-tile-action>
+            <v-list-tile-content>
+              <v-list-tile-title>{{ subItem.title }}</v-list-tile-title>
+            </v-list-tile-content>
+          </v-list-tile>
+
+        </v-list-group>
       </v-list>
 
     </v-navigation-drawer>
@@ -77,33 +92,54 @@
  * API: current weather
  * string: fizz buzz
  * string: reverse a string
- * string: pig latinizer
  * string: palindrome check
  * string: caesar cipher
  * interactive: blue apron game
  */
-import fibonacci from './components/Fibonacci';
+
 import change from './components/Change';
+import fibonacci from './components/Fibonacci';
+import pigLatin from './components/PigLatin';
+
+const strings = [
+  { key: 'pigLatin', title: 'Pig Latinizer', icon: 'pig', selected: true },
+];
+
+const numbers = [
+  { key: 'change', title: 'Make Change', icon: 'coins' },
+  { key: 'fibonacci', title: 'Fibonacci Calculator', icon: 'calculator' },
+];
 
 const items = [
-  { key: 'change', title: 'Make Change', icon: 'coins', selected: true },
-  { key: 'fibonacci', title: 'Fibonacci Calculator', icon: 'calculator' },
+  {
+    title: 'Numbers',
+    items: numbers,
+  },
+  {
+    title: 'Strings',
+    items: strings,
+    active: true,
+  },
 ];
 
 export default {
   components: {
-    fibonacci,
     change,
+    fibonacci,
+    pigLatin,
   },
   data: () => ({
     drawer: null,
     items,
-    selected: items[0],
+    selected: strings[0],
   }),
   methods: {
     selectItem(item) {
       this.selected = item;
-      this.items = this.items.map(i => ({ ...i, selected: i.key === item.key }));
+      this.items = this.items.map((i) => {
+        const it = i.items.map(si => ({ ...si, selected: si.key === item.key }));
+        return { ...i, items: it };
+      });
     },
   },
 };
