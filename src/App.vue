@@ -99,14 +99,16 @@
 
 import change from './components/Change';
 import fibonacci from './components/Fibonacci';
+import fizzbuzz from './components/Fizzbuzz';
 import pigLatin from './components/PigLatin';
 
 const strings = [
-  { key: 'pigLatin', title: 'Pig Latinizer', icon: 'pig', selected: true },
+  { key: 'fizzbuzz', title: 'Fizz Buzz', icon: 'format-align-center', selected: true },
+  { key: 'pigLatin', title: 'Pig Latinizer', icon: 'pig' },
 ];
 
 const numbers = [
-  { key: 'change', title: 'Make Change', icon: 'coins' },
+  { key: 'change', title: 'Make Change', icon: 'database' },
   { key: 'fibonacci', title: 'Fibonacci Calculator', icon: 'calculator' },
 ];
 
@@ -126,6 +128,7 @@ export default {
   components: {
     change,
     fibonacci,
+    fizzbuzz,
     pigLatin,
   },
   data: () => ({

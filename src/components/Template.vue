@@ -2,7 +2,9 @@
   <Card
     :source="source"
     :title="title">
-    <div slot="demo"></div>
+    <div slot="demo">
+      {{ string }}
+    </div>
   </Card>
 </template>
 
@@ -20,7 +22,9 @@ export default {
   },
   data() {
     return {
+      string: '',
       source: doSomething.toString(),
+      title: 'A title',
     };
   },
   methods: {
