@@ -90,7 +90,6 @@
  * API: distance between two cities
  * API: rss feed generator
  * API: current weather
- * string: fizz buzz
  * string: reverse a string
  * string: palindrome check
  * string: caesar cipher
@@ -100,10 +99,12 @@
 import change from './components/Change';
 import fibonacci from './components/Fibonacci';
 import fizzbuzz from './components/Fizzbuzz';
+import palindrome from './components/Palindrome';
 import pigLatin from './components/PigLatin';
 
 const strings = [
-  { key: 'fizzbuzz', title: 'Fizz Buzz', icon: 'format-align-center', selected: true },
+  { key: 'fizzbuzz', title: 'Fizz Buzz', icon: 'format-align-center' },
+  { key: 'palindrome', title: 'Palindrome Potential', icon: 'account-convert', selected: true },
   { key: 'pigLatin', title: 'Pig Latinizer', icon: 'pig' },
 ];
 
@@ -113,15 +114,8 @@ const numbers = [
 ];
 
 const items = [
-  {
-    title: 'Numbers',
-    items: numbers,
-  },
-  {
-    title: 'Strings',
-    items: strings,
-    active: true,
-  },
+  { title: 'Numbers', items: numbers },
+  { title: 'Strings', items: strings, active: true },
 ];
 
 export default {
@@ -129,6 +123,7 @@ export default {
     change,
     fibonacci,
     fizzbuzz,
+    palindrome,
     pigLatin,
   },
   data: () => ({
@@ -147,3 +142,10 @@ export default {
   },
 };
 </script>
+
+<style>
+  .application a {
+    color: black;
+  }
+</style>
+
