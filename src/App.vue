@@ -23,20 +23,17 @@
           v-for="item in items"
           :value="item.active"
           :key="item.title">
-          <v-list-tile slot="item">
+          <v-list-tile slot="activator">
             <v-list-tile-content>
               <v-list-tile-title>{{ item.title }}</v-list-tile-title>
             </v-list-tile-content>
-            <v-list-tile-action>
-              <v-icon>keyboard_arrow_down</v-icon>
-            </v-list-tile-action>
           </v-list-tile>
 
           <v-list-tile
             v-for="subItem in item.items"
             :key="subItem.title"
-            @click="selectItem(subItem)"
-            v-model="subItem.selected">
+            v-model="subItem.selected"
+            @click="selectItem(subItem)">
             <v-list-tile-action>
               <v-icon>mdi-{{ subItem.icon }}</v-icon>
             </v-list-tile-action>
