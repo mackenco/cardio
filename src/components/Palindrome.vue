@@ -73,10 +73,5 @@ export default {
       title: 'Palindrome Potential',
     };
   },
-  methods: {
-    handleChange() {
-
-    },
-  },
 };
 </script>
